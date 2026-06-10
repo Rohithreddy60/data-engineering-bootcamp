@@ -43,36 +43,25 @@ A key principle across all stages: pipelines should be **reproducible** and
 ---
 
 ## 2. Modern Data Stack Diagram
+```
+  [ GENERATION ]   POS systems, website events, APIs, sensors
+        |
+        v
+  [ INGESTION ]    Airbyte, custom Python  (batch + streaming)
+        |
+        v
+  [ STORAGE ]      Data Lake (S3)  -->  Data Warehouse (Snowflake)
+        |
+        v
+  [ TRANSFORM ]    dbt, SQL, Spark
+        |
+        v
+  [ SERVING ]      Power BI, analysts, ML models
 
-┌──────────────┐
-│  GENERATION  │   POS systems · Website events · APIs · Sensors
-└──────┬───────┘
-│
-▼
-┌──────────────┐
-│  INGESTION   │   Airbyte · Custom Python · (batch + streaming)
-└──────┬───────┘
-│
-▼
-┌──────────────┐
-│   STORAGE    │   Data Lake (S3) ──► Data Warehouse (BigQuery/Snowflake)
-└──────┬───────┘
-│
-▼
-┌──────────────┐
-│ TRANSFORM    │   dbt · SQL · Spark
-└──────┬───────┘
-│
-▼
-┌──────────────┐
-│   SERVING    │   Power BI · Analysts · ML Models
-└──────────────┘
-     ▲
-     │  Orchestration (runs & monitors the whole flow)
-┌─────┴────────┐
-│   AIRFLOW    │
-└──────────────┘
----
+
+  Orchestration (schedules + monitors the whole flow):
+  [ AIRFLOW ] ---> wraps around every stage above
+```
 
 ## 3. Tool Choices by Layer
 
