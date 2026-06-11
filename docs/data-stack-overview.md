@@ -2,8 +2,7 @@
 
 **Author:** Rohith
 **Role:** Junior Data Engineer
-**Purpose:** A one-page primer on how data flows through a modern organization
-and the tools we use at each stage.
+**Purpose:** A one-page primer on how data flows through a modern organization and the tools we use at each stage.
 
 ---
 
